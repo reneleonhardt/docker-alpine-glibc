@@ -15,7 +15,10 @@ main() {
   sudo chown -R builder:abuild /home/builder/package
   sudo chown -R builder:abuild $REPODEST
 
-  exec abuild "$@"
+  echo DEBUG APKBUILD
+  grep -E "arch=|pkgver=" APKBUILD
+
+  exec abuild "$@"  # 2>&1 > /tmp/abuild.log
 }
 
 main "$@"
